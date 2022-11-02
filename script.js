@@ -19,7 +19,7 @@ const createEvent = () => {
     tasksUl.appendChild(clone);
     clone.addEventListener('change', (event) => {
         if (clone.value == 'to do') {
-            li.className = "to-do";
+            li.className = "todo";
         }
         else if (clone.value == 'doing') {
             li.className = 'doing';
@@ -35,25 +35,53 @@ button.addEventListener('click', createEvent);
 
 // Only show by status
 
-
 statut.addEventListener('change', (event) => {
     if (statut.value == 'to do') {
-        document.getElementsByClassName('to-do').style.visibility = 'visible';
-        document.getElementsByClassName('doing').style.visibility = 'hidden';
-        document.getElementsByClassName('done').style.visibility = 'hidden';
-    }
+        const toDoClass = document.getElementsByClassName('todo');
+        for (const element of toDoClass) {
+        element.style.visibility = 'visible';
+        }
+        const doingClass = document.getElementsByClassName('doing');
+        for (const element of doingClass) {
+        element.style.visibility = 'hidden';
+        }
+        const doneClass = document.getElementsByClassName('done');
+        for (const element of doneClass) {
+        element.style.visibility = 'hidden';
+        }
+}
     else if (statut.value == 'doing') {
-        document.getElementsByClassName('to-do').style.visibility = 'hidden';
-        document.getElementsByClassName('doing').style.visibility = 'visible';
-        document.getElementsByClassName('done').style.visibility = 'hidden';
+        const doingClass = document.getElementsByClassName('doing');
+        for (const element of doingClass) {
+        element.style.visibility = 'visible';
+        }
+        const toDoClass = document.getElementsByClassName('todo');
+        for (const element of toDoClass) {
+        element.style.visibility = 'hidden';
+        }
+        const doneClass = document.getElementsByClassName('done');
+        for (const element of doneClass) {
+        element.style.visibility = 'hidden';
+        }
     }
     else if (statut.value == 'done') {
-        document.getElementsByClassName('to-do').style.visibility = 'hidden';
-        document.getElementsByClassName('doing').style.visibility = 'hidden';
-        document.getElementsByClassName('done').style.visibility = 'visible';
+        const doneClass = document.getElementsByClassName('done');
+        for (const element of doneClass) {
+        element.style.visibility = 'visible';
+        }
+        const toDoClass = document.getElementsByClassName('todo');
+        for (const element of toDoClass) {
+        element.style.visibility = 'hidden';
+        }
+        const doingClass = document.getElementsByClassName('doing');
+        for (const element of doingClass) {
+        element.style.visibility = 'hidden';
+        }
     }
     }
 );
+
+
 
 
 
